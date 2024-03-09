@@ -1,0 +1,22 @@
+{
+  "name": "elmtx-2",
+  "version": "1.0.50",
+  "scripts": {
+    "dev": "bun run --watch src/index.tsx"
+  },
+  "devDependencies": {
+    "@elysiajs/html": "^0.8.0",
+    "bun-types": "latest",
+    "elysia": "latest",
+    "prisma": "^5.10.2",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@elysiajs/lucia-auth": "^0.8.0-exp.1",
+    "@lucia-auth/adapter-prisma": "^4.0.0",
+    "@prisma/client": "5.10.2",
+    "arctic": "^1.2.1",
+    "lucia": "^3.0.1",
+    "oslo": "^1.1.3"
+  }
+}

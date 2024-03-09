@@ -1,0 +1,42 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             String    @id
+  provider_id      String?   @unique
+  provider_user_id       String?
+  sessions       Session[]
+  cards          Card[]
+}
+
+model Card {
+  id        String   @id
+  createdAt DateTime @default(now())
+  userId    String
+  title     String
+  content   String
+  color     String
+  dueDate   DateTime?
+  archived  Boolean  @default(false)
+  user      User     @relation(references: [id], fields: [userId], onDelete: Cascade)
+}
+
+model Session {
+  id        String   @id
+  provider_id String?
+  userId    String
+  expiresAt DateTime
+  user      User     @relation(references: [id], fields: [userId], onDelete: Cascade)
+}
