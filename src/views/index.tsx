@@ -1,7 +1,7 @@
 import { Nav } from "./components/Nav";
 
 export const index = (user) => {
-        return (
+    return (
         <html lang="en">
             <head>
                 <title>Elmtx</title>
@@ -13,12 +13,16 @@ export const index = (user) => {
                 />
 
                 <script src="https://unpkg.com/htmx.org/dist/htmx.js" />
-                <script src="https://unpkg.com/alpinejs" />
+                <script src="https://unpkg.com/alpinejs" defer />
             </head>
             <body class="container">
                 {user ? <Nav user={user} /> : <Nav />}
-                {user ? <main id="content" hx-get="/account" hx-trigger="load" /> : <main id="content" hx-get="/login" hx-trigger="load" />}
+                {user ? (
+                    <main id="content" hx-get="/account" hx-trigger="load" />
+                ) : (
+                    <main id="content" hx-get="/login" hx-trigger="load" />
+                )}
             </body>
         </html>
     );
-    }
+};

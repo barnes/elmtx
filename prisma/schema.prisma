@@ -24,7 +24,7 @@ model User {
 model Card {
   id        String   @id
   createdAt DateTime @default(now())
-  userId    String
+  userId    String  @unique
   title     String
   content   String
   color     String
